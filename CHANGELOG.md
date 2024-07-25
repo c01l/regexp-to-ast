@@ -1,3 +1,7 @@
+## 0.6.0 (7-25-2024)
+
+- Add support for named capturing groups
+
 ## 0.5.0 (11-12-2019)
 
 -   [Added location to AST](https://github.com/bd82/regexp-to-ast/pull/28)
