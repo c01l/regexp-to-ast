@@ -1,4 +1,4 @@
-## 0.6.0 (7-25-2024)
+## X.Y.Z (INSERT_DATE_HERE)
 
 - Add support for named capturing groups
 
