@@ -71,6 +71,7 @@ export interface Group extends IRegExpAST {
     type: "Group"
     value: Disjunction
     capturing: boolean
+    name?: string
     idx?: number
     quantifier?: Quantifier
 }

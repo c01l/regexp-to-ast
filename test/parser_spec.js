@@ -1744,6 +1744,76 @@ describe("The RegExp to Ast parser", () => {
                 })
             })
 
+            it("capturing with group name", () => {
+                const ast = parser.pattern("/(?<name>a)(?<second-name>b)/")
+                expect(ast.value).to.deep.equal({
+                    type: "Disjunction",
+                    loc: { begin: 1, end: 7 },
+                    value: [
+                        {
+                            type: "Alternative",
+                            loc: { begin: 1, end: 7 },
+                            value: [
+                                {
+                                    type: "Group",
+                                    loc: { begin: 1, end: 4 },
+                                    capturing: true,
+                                    name: "name",
+                                    value: {
+                                        type: "Disjunction",
+                                        loc: { begin: 2, end: 3 },
+                                        value: [
+                                            {
+                                                type: "Alternative",
+                                                loc: { begin: 2, end: 3 },
+                                                value: [
+                                                    {
+                                                        type: "Character",
+                                                        loc: {
+                                                            begin: 2,
+                                                            end: 3
+                                                        },
+                                                        value: 97
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    idx: 1
+                                },
+                                {
+                                    type: "Group",
+                                    loc: { begin: 4, end: 7 },
+                                    capturing: true,
+                                    name: "second-name",
+                                    value: {
+                                        type: "Disjunction",
+                                        loc: { begin: 5, end: 6 },
+                                        value: [
+                                            {
+                                                type: "Alternative",
+                                                loc: { begin: 5, end: 6 },
+                                                value: [
+                                                    {
+                                                        type: "Character",
+                                                        loc: {
+                                                            begin: 5,
+                                                            end: 6
+                                                        },
+                                                        value: 98
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    idx: 2
+                                }
+                            ]
+                        }
+                    ]
+                })
+            })
+
             it("non capturing", () => {
                 const ast = parser.pattern("/(?:a)(b)/")
                 expect(ast.value).to.deep.equal({
